@@ -1,0 +1,142 @@
+# Executable files
+#bin/ami304d
+bin/cnd
+bin/ks
+bin/mpdecision
+bin/netmgrd
+bin/qcks
+bin/qmiproxy
+bin/qmuxd
+bin/rild
+bin/rmt_storage
+bin/thermald
+bin/time_daemon
+
+# Audio
+lib/libacdbloader.so
+lib/libacdbmapper.so
+lib/libaudcal.so
+lib/libaudioalsa.so
+
+# Camera
+lib/libgemini.so
+lib/libidl.so
+lib/libmmipl.so
+lib/libmmjpeg.so
+lib/libmmjps.so
+lib/libmmmpo.so
+lib/libmmmpod.so
+lib/libmmstereo.so
+lib/liboemcamera.so
+lib/libDivxDrm.so
+lib/libOlaFaceDetector.so
+lib/lib_LG_fastaf_v2.0.so
+lib/libmmparser.so
+lib/libmmosal.so
+
+# Chromatix
+lib/libchromatix_imx074_default_video.so
+lib/libchromatix_imx074_preview.so
+lib/libchromatix_imx074_zsl.so
+lib/libchromatix_mt9e013_default_video.so
+lib/libchromatix_mt9e013_preview.so
+
+# Misc libraries
+lib/libmm-color-convertor.so
+
+# Bluetooth
+bin/BCM4330B14.hcd
+
+# Thermal
+lib/libthermal_mitigation.so
+lib/libthermal_mitigation_fusion.so
+
+# Radio
+lib/libril-qc-qmi-1.so
+lib/libril-qcril-hook-oem.so
+lib/libril.so
+lib/libdiag.so
+lib/libdsi_netctrl.so
+lib/libdsm.so
+lib/libdsutils.so
+lib/libidl.so
+lib/libnetmgr.so
+lib/libnv.so
+lib/liboncrpc.so
+lib/libqc-opt.so
+lib/libqdi.so
+lib/libqdp.so
+lib/libqmi.so
+lib/libqmiservices.so
+lib/libqueue.so
+lib/libtime_genoff.so
+lib/libtime_remote_atom.so
+
+# Sensors
+lib/hw/sensors.msm8660.so
+
+# Lights
+lib/hw/lights.msm8660.so
+
+# NFC
+lib/hw/nfc.default.so
+
+# cnd
+lib/libcneutils.so
+lib/libcneqmiutils.so
+lib/libxml.so
+
+# rild
+lib/liboem_rapi.so
+lib/liboem_rapi_fusion.so
+
+# firmware
+etc/firmware/yamato_pfp.fw
+etc/firmware/yamato_pm4.fw
+etc/firmware/vidc_1080p.fw
+etc/firmware/leia_pfp_470.fw
+etc/firmware/leia_pm4_470.fw
+etc/firmware/fw_bcmdhd.bin
+etc/firmware/fw_bcmdhd_apsta.bin
+etc/firmware/fw_bcmdhd_mfgtest.bin
+etc/firmware/fw_bcmdhd_p2p.bin
+etc/firmware/dsps_fluid.b00
+etc/firmware/dsps_fluid.b01
+etc/firmware/dsps_fluid.b02
+etc/firmware/dsps_fluid.b03
+etc/firmware/dsps_fluid.mdt
+
+# Wifi
+etc/wifi/wpa_supplicant.conf
+etc/wifi/bcmdhd.cal
+
+# Key
+usr/keylayout/atcmd_virtual_kbd.kl
+usr/keylayout/ats_input.kl
+usr/keylayout/batman_lgu-keypad.kl
+usr/keylayout/pmic8xxx_pwrkey.kl
+usr/keylayout/synaptics_ts.kl
+usr/idc/touch_dev.idc
+
+# Thermald
+etc/thermald.conf
+
+# libv8
+lib/libv8.so
+
+## apn
+#etc/apns-conf.xml
+
+## egl
+#lib/libc2d2_z180.so
+#lib/libC2D2.so
+#lib/libgsl.so
+#lib/libOpenVG.so
+#lib/libsc-a2xx.so
+#lib/egl/eglsubAndroid.so
+#lib/egl/libEGL_adreno200.so
+#lib/egl/libGLES_android.so
+#lib/egl/libGLESv1_CM_adreno200.so
+#lib/egl/libGLESv2S3D_adreno200.so
+#lib/egl/libGLESv2_adreno200.so
+#lib/egl/libq3dtools_adreno200.so
