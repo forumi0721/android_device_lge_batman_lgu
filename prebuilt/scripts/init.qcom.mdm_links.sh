@@ -33,7 +33,8 @@ PATH=/sbin:/system/sbin:/system/bin:/system/xbin
 export PATH
 
 # Changed partition layout and size, 20110521
-mount -t ext4 -o remount,rw,barrier=0 /dev/block/mmcblk0p26 /system
+#mount -t ext4 -o remount,rw,barrier=0 /dev/block/mmcblk0p26 /system
+mount -t ext4 -o remount,rw /system
 
 mkdir /system/etc/firmware/misc_mdm
 chmod 771  /system/etc/firmware/misc_mdm

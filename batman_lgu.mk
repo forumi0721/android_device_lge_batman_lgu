@@ -1,8 +1,18 @@
+# Configs
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/prebuilt/configs/gps.conf:system/etc/gps.conf \
+    $(LOCAL_PATH)/prebuilt/configs/vold.fstab:system/etc/vold.fstab \
+    $(LOCAL_PATH)/prebuilt/configs/audio_effects.conf:system/etc/audio_effects.conf \
+    $(LOCAL_PATH)/prebuilt/configs/media_profiles.xml:system/etc/media_profiles.xml \
+    $(LOCAL_PATH)/prebuilt/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/prebuilt/configs/batman_lgu-keypad.kl:system/usr/keylayout/batman_lgu-keypad.kl
+
 $(call inherit-product, build/target/product/full.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_small.mk)
 
-$(call inherit-product, device/common/gps/gps_us.mk)
+#$(call inherit-product, device/common/gps/gps_us.mk)
 
 $(call inherit-product-if-exists, vendor/lge/batman_lgu/batman_lgu-vendor.mk)
 
@@ -22,58 +32,50 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/scripts/init.qcom.mdm_links.sh:system/etc/init.qcom.mdm_links.sh \
     $(LOCAL_PATH)/prebuilt/scripts/init.qcom.bt.sh:system/bin/init.qcom.bt.sh
 
-# Configs
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    $(LOCAL_PATH)/prebuilt/configs/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/prebuilt/configs/audio_effects.conf:system/etc/audio_effects.conf \
-    $(LOCAL_PATH)/prebuilt/configs/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/prebuilt/configs/vold.fstab:system/etc/vold.fstab
-
 # Camera lib
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/camera/camera.msm8660.so:system/lib/hw/camera.msm8660.so
 
-# Modules
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/kernel/ansi_cprng.ko:system/lib/modules/ansi_cprng.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/bthid.ko:system/lib/modules/bthid.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/cls_flow.ko:system/lib/modules/cls_flow.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/cpaccess.ko:system/lib/modules/cpaccess.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/dal_remotetest.ko:system/lib/modules/dal_remotetest.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/dma_test.ko:system/lib/modules/dma_test.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/evbug.ko:system/lib/modules/evbug.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/gspca_main.ko:system/lib/modules/gspca_main.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/ksapi.ko:system/lib/modules/ksapi.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/lcd.ko:system/lib/modules/lcd.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/max2165.ko:system/lib/modules/max2165.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/mc44s803.ko:system/lib/modules/mc44s803.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/msm-buspm-dev.ko:system/lib/modules/msm-buspm-dev.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/msm_tsif.ko:system/lib/modules/msm_tsif.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/mt2060.ko:system/lib/modules/mt2060.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/mt20xx.ko:system/lib/modules/mt20xx.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/mt2131.ko:system/lib/modules/mt2131.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/mt2266.ko:system/lib/modules/mt2266.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/mxl5005s.ko:system/lib/modules/mxl5005s.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/mxl5007t.ko:system/lib/modules/mxl5007t.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/oprofile.ko:system/lib/modules/oprofile.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/qt1010.ko:system/lib/modules/qt1010.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/sch_dsmark.ko:system/lib/modules/sch_dsmark.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/spidev.ko:system/lib/modules/spidev.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/tda18212.ko:system/lib/modules/tda18212.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/tda18218.ko:system/lib/modules/tda18218.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/tda18271.ko:system/lib/modules/tda18271.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/tda827x.ko:system/lib/modules/tda827x.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/tda8290.ko:system/lib/modules/tda8290.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/tda9887.ko:system/lib/modules/tda9887.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/tea5761.ko:system/lib/modules/tea5761.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/tea5767.ko:system/lib/modules/tea5767.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/tsif_chrdev.ko:system/lib/modules/tsif_chrdev.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/tuner-simple.ko:system/lib/modules/tuner-simple.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/tuner-types.ko:system/lib/modules/tuner-types.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/tuner-xc2028.ko:system/lib/modules/tuner-xc2028.ko \
-    $(LOCAL_PATH)/prebuilt/kernel/xc5000.ko:system/lib/modules/xc5000.ko
+## Modules
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/prebuilt/kernel/ansi_cprng.ko:system/lib/modules/ansi_cprng.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/bthid.ko:system/lib/modules/bthid.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/cls_flow.ko:system/lib/modules/cls_flow.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/cpaccess.ko:system/lib/modules/cpaccess.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/dal_remotetest.ko:system/lib/modules/dal_remotetest.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/dma_test.ko:system/lib/modules/dma_test.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/evbug.ko:system/lib/modules/evbug.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/gspca_main.ko:system/lib/modules/gspca_main.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/ksapi.ko:system/lib/modules/ksapi.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/lcd.ko:system/lib/modules/lcd.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/max2165.ko:system/lib/modules/max2165.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/mc44s803.ko:system/lib/modules/mc44s803.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/msm-buspm-dev.ko:system/lib/modules/msm-buspm-dev.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/msm_tsif.ko:system/lib/modules/msm_tsif.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/mt2060.ko:system/lib/modules/mt2060.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/mt20xx.ko:system/lib/modules/mt20xx.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/mt2131.ko:system/lib/modules/mt2131.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/mt2266.ko:system/lib/modules/mt2266.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/mxl5005s.ko:system/lib/modules/mxl5005s.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/mxl5007t.ko:system/lib/modules/mxl5007t.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/oprofile.ko:system/lib/modules/oprofile.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/qt1010.ko:system/lib/modules/qt1010.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/sch_dsmark.ko:system/lib/modules/sch_dsmark.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/spidev.ko:system/lib/modules/spidev.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/tda18212.ko:system/lib/modules/tda18212.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/tda18218.ko:system/lib/modules/tda18218.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/tda18271.ko:system/lib/modules/tda18271.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/tda827x.ko:system/lib/modules/tda827x.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/tda8290.ko:system/lib/modules/tda8290.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/tda9887.ko:system/lib/modules/tda9887.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/tea5761.ko:system/lib/modules/tea5761.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/tea5767.ko:system/lib/modules/tea5767.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/tsif_chrdev.ko:system/lib/modules/tsif_chrdev.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/tuner-simple.ko:system/lib/modules/tuner-simple.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/tuner-types.ko:system/lib/modules/tuner-types.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/tuner-xc2028.ko:system/lib/modules/tuner-xc2028.ko \
+#    $(LOCAL_PATH)/prebuilt/kernel/xc5000.ko:system/lib/modules/xc5000.ko
 
 # KoreanIME
 PRODUCT_COPY_FILES += \
@@ -94,8 +96,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/jb_libs/lib/libOpenVG.so:system/lib/libOpenVG.so \
     $(LOCAL_PATH)/prebuilt/jb_libs/lib/libgsl.so:system/lib/libgsl.so
 
-
-# Permission files
+# Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -117,6 +118,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_LOCALES += ko_KR
+
+# Torch WifiDirect
+PRODUCT_PACKAGES += \
+    Torch \
+    WifiDirect
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -175,8 +181,8 @@ PRODUCT_PACKAGES += \
 
 # NFC
 # Commands to migrate prefs from com.android.nfc3 to com.android.nfc
-PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
-packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt)
+PRODUCT_COPY_FILES += \
+    $(call add-to-product-copy-files-if-exists, packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt)
 
 PRODUCT_PACKAGES += \
     nfc.msm8660 \
@@ -189,24 +195,24 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     hcitool \
-    hciconfig \
-    hwaddrs
+    hciconfig
 
-# batman_lguu source
+# Local src
 PRODUCT_PACKAGES += \
-    ami304d
-#    power.batman_lgu \
-#    lights.batman_lgu
+    hwaddrs \
+    ami304d \
+    power.batman_lgu \
+    lights.batman_lgu
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := $(LOCAL_PATH)/prebuilt/kernel/kernel
-else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
+## Prebuilt local src
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/prebuilt/local/hwaddrs:system/bin/hwaddrs \
+#    $(LOCAL_PATH)/prebuilt/local/ami304d:system/bin/ami304d \
+#    $(LOCAL_PATH)/prebuilt/local/audio.primary.batman_lgu.so:system/lib/hw/audio.primary.batman_lgu.so \
+#    $(LOCAL_PATH)/prebuilt/local/lights.batman_lgu.so:system/lib/hw/lights.batman_lgu.so \
+#    $(LOCAL_PATH)/prebuilt/local/power.batman_lgu.so:system/lib/hw/power.batman_lgu.so
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel \
+PRODUCT_TAGS += \
+    dalvik.gc.type-precise
 
-PRODUCT_TAGS += dalvik.gc.type-precise
-
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=1351143135
+$(call inherit-product-if-exists, device/lge/batman_lgu/stonecold/stonecold.mk)

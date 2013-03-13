@@ -1,7 +1,13 @@
 ## Specify phone tech before including full_phone
 #$(call inherit-product, vendor/cm/config/cdma.mk)
 #$(call inherit-product, vendor/cm/config/gsm.mk)
-$(call inherit-product, device/lge/batman_lgu/stonecold/uplus.mk)
+# LG U+ apns-conf.xml
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/configs/apns-conf.xml:system/etc/apns-conf.xml
+
+# LG U+ Stk
+PRODUCT_PACKAGES += \
+    Stk
 
 # Release name
 PRODUCT_RELEASE_NAME := OptimusVu
@@ -32,6 +38,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_AAPT_CHARACTERISTICS=nosdcard \
     PRODUCT_DEFAULT_LANGUAGE=ko \
     PRODUCT_DEFAULT_REGION=KR
-
-# Enable Torch
-PRODUCT_PACKAGES += Torch WifiDirect

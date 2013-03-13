@@ -19,7 +19,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#define LOG_TAG "I-Project PowerHAL"
+#define LOG_TAG "batman_lgu PowerHAL"
 #include <utils/Log.h>
 
 #include <hardware/hardware.h>

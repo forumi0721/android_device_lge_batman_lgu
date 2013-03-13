@@ -4,21 +4,11 @@
 # network
 ro.telephony.default_network=10
 telephony.lteOnCdmaDevice=1
-telephony.lteOnGsmDevice=1
+#telephony.lteOnGsmDevice=1
 
 # ril
 rild.libpath=/system/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
-
-persist.rild.nitz_plmn=
-persist.rild.nitz_long_ons_0=
-persist.rild.nitz_long_ons_1=
-persist.rild.nitz_long_ons_2=
-persist.rild.nitz_long_ons_3=
-persist.rild.nitz_short_ons_0=
-persist.rild.nitz_short_ons_1=
-persist.rild.nitz_short_ons_2=
-persist.rild.nitz_short_ons_3=
 
 ril.subscription.types=NV,RUIM
 
@@ -31,7 +21,8 @@ ro.config.ehrpd=true
 ro.config.svlte1x=true
 ro.cdma.subscribe_on_ruim_ready=true
 gsm.version.baseband=MSM8660/MDM9600
-mobiledata.interfaces=rmnet_sdio0,rmnet_sdio1
+#mobiledata.interfaces=rmnet_sdio0,rmnet_sdio1
+mobiledata.interfaces=rmnet_sdio0
 
 ro.sf.lcd_density=320
 DEVICE_PROVISIONED=1
