@@ -1,1 +1,1 @@
-add_lunch_combo f100l-eng
+add_lunch_combo full_batman_lgu-eng
