@@ -80,6 +80,14 @@ lib/hw/lights.msm8660.so
 
 # NFC
 lib/hw/nfc.default.so
+etc/nfcee_access.xml
+
+# GPS 
+lib/libgps.utils.so
+lib/libloc_adapter.so
+lib/libloc_api-rpc-qc.so
+lib/libloc_eng.so
+lib/libcommondefs.so
 
 # cnd
 lib/libcneutils.so
@@ -91,32 +99,32 @@ lib/liboem_rapi.so
 lib/liboem_rapi_fusion.so
 
 # firmware
-etc/firmware/yamato_pfp.fw
-etc/firmware/yamato_pm4.fw
-etc/firmware/vidc_1080p.fw
-etc/firmware/leia_pfp_470.fw
-etc/firmware/leia_pm4_470.fw
-etc/firmware/fw_bcmdhd.bin
-etc/firmware/fw_bcmdhd_apsta.bin
-etc/firmware/fw_bcmdhd_mfgtest.bin
-etc/firmware/fw_bcmdhd_p2p.bin
 etc/firmware/dsps_fluid.b00
 etc/firmware/dsps_fluid.b01
 etc/firmware/dsps_fluid.b02
 etc/firmware/dsps_fluid.b03
 etc/firmware/dsps_fluid.mdt
+etc/firmware/fw_bcmdhd.bin
+etc/firmware/fw_bcmdhd_apsta.bin
+etc/firmware/fw_bcmdhd_mfgtest.bin
+etc/firmware/fw_bcmdhd_p2p.bin
+#etc/firmware/leia_pfp_470.fw
+#etc/firmware/leia_pm4_470.fw
+etc/firmware/vidc_1080p.fw
+#etc/firmware/yamato_pfp.fw
+#etc/firmware/yamato_pm4.fw
 
 # Wifi
 etc/wifi/wpa_supplicant.conf
 etc/wifi/bcmdhd.cal
 
 # Key
-usr/keylayout/atcmd_virtual_kbd.kl
-usr/keylayout/ats_input.kl
+#usr/keylayout/atcmd_virtual_kbd.kl
+#usr/keylayout/ats_input.kl
 #usr/keylayout/batman_lgu-keypad.kl
-usr/keylayout/pmic8xxx_pwrkey.kl
-usr/keylayout/synaptics_ts.kl
-usr/idc/touch_dev.idc
+#usr/keylayout/pmic8xxx_pwrkey.kl
+#usr/keylayout/synaptics_ts.kl
+#usr/idc/touch_dev.idc
 
 # Thermald
 etc/thermald.conf

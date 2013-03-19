@@ -1,13 +1,7 @@
 ## Specify phone tech before including full_phone
-#$(call inherit-product, vendor/cm/config/cdma.mk)
-#$(call inherit-product, vendor/cm/config/gsm.mk)
-# LG U+ apns-conf.xml
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/configs/apns-conf.xml:system/etc/apns-conf.xml
-
-# LG U+ Stk
-PRODUCT_PACKAGES += \
-    Stk
+# LG U+ APN
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/prebuilt/configs/apns-conf.xml:system/etc/apns-conf.xml
+PRODUCT_PACKAGES += Stk
 
 # Release name
 PRODUCT_RELEASE_NAME := OptimusVu

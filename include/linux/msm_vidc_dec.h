@@ -514,13 +514,14 @@ struct vdec_framesize {
 	uint32_t   bottom;
 };
 
-//cm10 batman_lgu
+//cm10 batman_lgu {
 struct vdec_aspectratioinfo {
- uint32_t aspect_ratio;
- uint32_t par_width;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- uint32_t par_height;
+	uint32_t aspect_ratio;
+	uint32_t par_width;
+	/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+	uint32_t par_height;
 };
+//cm10 batman_lgu }
 
 struct vdec_output_frameinfo {
 	void __user *bufferaddr;
@@ -533,8 +534,9 @@ struct vdec_output_frameinfo {
 	void *input_frame_clientdata;
 	struct vdec_framesize framesize;
 	enum vdec_interlaced_format interlaced_format;
-	//
-        struct vdec_aspectratioinfo aspect_ratio_info;
+	//cm10 batman_lgu {
+	struct vdec_aspectratioinfo aspect_ratio_info;
+	//cm10 batman_lgu }
 };
 
 union vdec_msgdata {

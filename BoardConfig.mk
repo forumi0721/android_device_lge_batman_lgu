@@ -14,6 +14,7 @@ TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := msm8660
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 
+TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
@@ -24,7 +25,6 @@ TARGET_BOOTLOADER_BOARD_NAME := BATMAN_LGU
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
-
 
 # Preload bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
@@ -56,7 +56,7 @@ TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_GENLOCK := true
 TARGET_USES_ION := true
 BOARD_USES_QCOM_LIBS := true
-BOARD_EGL_CFG := device/lge/batman_lgu/prebuilt/jb_libs/egl/egl.cfg
+BOARD_EGL_CFG := device/lge/batman_lgu/prebuilt/adreno/lib/egl/egl.cfg
 TARGET_USES_OVERLAY := true
 TARGET_NO_HW_VSYNC := true
 TARGET_HAVE_BYPASS  := true
@@ -75,7 +75,7 @@ BOARD_FORCE_RAMDISK_ADDRESS := 0x41a00000
 TARGET_KERNEL_SOURCE := kernel/lge/batman_lgu
 TARGET_KERNEL_CONFIG := cyanogenmod_batman_lgu_defconfig
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
-TARGET_PREBUILT_KERNEL := device/lge/batman_lgu/prebuilt/kernel/kernel
+TARGET_PREBUILT_KERNEL := device/lge/batman_lgu/prebuilt/root/kernel
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00A00000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x01000000
@@ -115,7 +115,7 @@ ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := false
 
 # Recovery
-#BOARD_CUSTOM_GRAPHICS := ../../../device/lge/batman_lgu/recovery/graphics.c
+BOARD_CUSTOM_GRAPHICS := ../../../device/lge/batman_lgu/recovery/graphics.c
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/lge/batman_lgu/recovery/recovery_keymapping.c
 TARGET_USERIMAGES_USE_EXT4 := true
