@@ -99,6 +99,12 @@ on boot
     # PowerHAL perms
     chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
 
+    # Vibrator amp 
+    write /sys/devices/virtual/timed_output/vibrator 50
+
+    # Button backlight
+    write /sys/class/leds/button-backlight/max_brightness 1
+
 #20120308, seunghyup.ryoo@lge.com,  [START]
 # NFC Property and driver permission
 # Please do not modify location.
