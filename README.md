@@ -12,12 +12,12 @@ Working:
 * Camera
 * Video
 * Auto-brightness
+* MTP
 
 Don't know:
 * Hotspot
 * Bluetooth
 * GPS
-* MTP
 
 Known issues:
 * USB Tethering is not working
