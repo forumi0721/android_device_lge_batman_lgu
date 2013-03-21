@@ -5,7 +5,6 @@ on early-boot
     setrlimit 8 67108864 67108864
 
 on boot
-# yennie.kang for AMI306
     chown compass system /dev/k3g_misc
     chmod 0660 /dev/k3g_misc
     chown compass system /dev/k3dh_acc_misc
@@ -105,22 +104,19 @@ on boot
     # Button backlight
     write /sys/class/leds/button-backlight/max_brightness 1
 
-#20120308, seunghyup.ryoo@lge.com,  [START]
-# NFC Property and driver permission
-# Please do not modify location.
+    # NFC Property and driver permission
 	chmod 0660 /dev/pn544
 	setprop ro.nfc.port I2C
 	chown nfc system /dev/pn544	
-#20120308, seunghyup.ryoo@lge.com,  [END]
 
 on init
     export TMPDIR /data/local/tmp
     export EXTERNAL_STORAGE /storage/sdcard0
 
-# Backward compatibility
+    # Backward compatibility
     symlink /system/bin /bin
 
-# create mountpoints for storage
+    # create mountpoints for storage
     mkdir /storage 0555 system system
     mkdir /storage/sdcard0 0000 system system
     symlink /storage/sdcard0 /sdcard
@@ -151,19 +147,18 @@ on emmc-fs
     exec /system/bin/e2fsck -y /dev/block/mmcblk0p29
     mount ext4 /dev/block/mmcblk0p29 /mpt nosuid nodev barrier=1 data=ordered
 
-   mkdir /tombstones 0771 system system
-   mount ext4 /dev/block/mmcblk0p22 /tombstones nosuid nodev barrier=1
-   mkdir /tombstones/modem 0771 system system
-   mkdir /tombstones/mdm 0771 system system
-   mkdir /tombstones/lpass 0771 system system
-   mkdir /firmware 0771 system system
-   wait /dev/block/mmcblk0p1
-#[LGE_UPDATE_S] changed /firmware mount options to remove other-writable permission, which is ATT requirement.
-#   mount vfat /dev/block/mmcblk0p1 /firmware ro shortname=lower
-   mount vfat /dev/block/mmcblk0p1 /firmware ro shortname=lower,umask=0003
-#[LGE_UPDATE_E] by jaein.lee(2011.06.29)
-   exec /system/bin/sh /system/etc/init.qcom.modem_links.sh
-   exec /system/bin/sh /system/etc/init.qcom.mdm_links.sh
+    #tombstones
+    mkdir /tombstones 0771 system system
+    mount ext4 /dev/block/mmcblk0p22 /tombstones nosuid nodev barrier=1
+    mkdir /tombstones/modem 0771 system system
+    mkdir /tombstones/mdm 0771 system system
+    mkdir /tombstones/lpass 0771 system system
+    mkdir /firmware 0771 system system
+    wait /dev/block/mmcblk0p1
+    mount vfat /dev/block/mmcblk0p1 /firmware ro shortname=lower,umask=0003
+
+    exec /system/bin/sh /system/etc/init.qcom.modem_links.sh
+    exec /system/bin/sh /system/etc/init.qcom.mdm_links.sh
 
 on post-fs
     # mpt partition attribute
@@ -182,7 +177,6 @@ on post-fs
     # create dirs if not exist
     mkdir /data/lgdrm 0770 lgdrm lgdrm_acc
     mkdir /data/wmdrm 0770 lgdrm lgdrm_acc
-## ANDY_END
 
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -321,12 +315,6 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
-
-service hciattach /system/bin/init.qcom.bt.sh
-    class main
-    #user bluetooth
-    group bluetooth net_bt_admin
-    disabled
 
 on property:dev.bootcomplete=1
     exec /system/bin/hwaddrs

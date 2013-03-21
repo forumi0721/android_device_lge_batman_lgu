@@ -108,11 +108,7 @@ etc/firmware/fw_bcmdhd.bin
 etc/firmware/fw_bcmdhd_apsta.bin
 etc/firmware/fw_bcmdhd_mfgtest.bin
 etc/firmware/fw_bcmdhd_p2p.bin
-#etc/firmware/leia_pfp_470.fw
-#etc/firmware/leia_pm4_470.fw
 etc/firmware/vidc_1080p.fw
-#etc/firmware/yamato_pfp.fw
-#etc/firmware/yamato_pm4.fw
 
 # Wifi
 etc/wifi/wpa_supplicant.conf
@@ -140,6 +136,10 @@ vendor/lib/libwvdrm_L3.so
 vendor/firmware/libpn544_fw.so
 
 ## egl
+#etc/firmware/leia_pfp_470.fw
+#etc/firmware/leia_pm4_470.fw
+#etc/firmware/yamato_pfp.fw
+#etc/firmware/yamato_pm4.fw
 #lib/libC2D2.so
 #lib/libgsl.so
 #lib/libOpenVG.so
