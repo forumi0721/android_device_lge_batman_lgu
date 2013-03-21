@@ -22,7 +22,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/configs/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/prebuilt/configs/media_codecs.xml:system/etc/media_codecs.xml
 
-$(call inherit-product, build/target/product/full.mk)
+#$(call inherit-product, build/target/product/full.mk)
+$(if $(wildcard device/lge/batman_lgu/stonecold/product/full.mk), $(call inherit-product-if-exists, device/lge/batman_lgu/stonecold/product/full.mk), $(call inherit-product, build/target/product/full.mk))
 
 # root
 PRODUCT_COPY_FILES += \
@@ -193,13 +194,3 @@ PRODUCT_PACKAGES += \
     hwaddrs \
     lights.batman_lgu \
     power.batman_lgu
-
-## prebuilt local src
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/prebuilt/local/hwaddrs:system/bin/hwaddrs \
-#    $(LOCAL_PATH)/prebuilt/local/ami304d:system/bin/ami304d \
-#    $(LOCAL_PATH)/prebuilt/local/audio.primary.batman_lgu.so:system/lib/hw/audio.primary.batman_lgu.so \
-#    $(LOCAL_PATH)/prebuilt/local/lights.batman_lgu.so:system/lib/hw/lights.batman_lgu.so \
-#    $(LOCAL_PATH)/prebuilt/local/power.batman_lgu.so:system/lib/hw/power.batman_lgu.so
-
-$(call inherit-product-if-exists, device/lge/batman_lgu/stonecold/stonecold.mk)

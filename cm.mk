@@ -9,10 +9,14 @@ PRODUCT_RELEASE_NAME := OptimusVu
 TARGET_BOOTANIMATION_NAME := vertical-720x1280
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+#$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(if $(wildcard device/lge/batman_lgu/stonecold/product/common_full_phone.mk), $(call inherit-product-if-exists, device/lge/batman_lgu/stonecold/product/common_full_phone.mk), $(call inherit-product, vendor/cm/config/common_full_phone.mk))
 
 # Inherit device configuration
 $(call inherit-product, device/lge/batman_lgu/batman_lgu.mk)
+
+# Inherit some common StoneCold stuff
+$(call inherit-product-if-exists, device/lge/batman_lgu/stonecold/stonecold.mk)
 
 # Device naming
 PRODUCT_DEVICE := batman_lgu
