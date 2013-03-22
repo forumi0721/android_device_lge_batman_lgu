@@ -86,8 +86,8 @@ PRODUCT_COPY_FILES += \
 
 # KoreanIME
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/ime/KoreanIME.apk:system/app/LatinIME.apk \
-    $(LOCAL_PATH)/prebuilt/ime/libjni_koreanime.so:system/lib/libjni_koreanime.so
+    $(if $(wildcard device/lge/batman_lgu/stonecold/product/generic_no_telephony.mk), $(call add-to-product-copy-files-if-exists, $(LOCAL_PATH)/prebuilt/ime/KoreanIME.apk:system/app/KoreanIME.apk), $(call add-to-product-copy-files-if-exists, $(LOCAL_PATH)/prebuilt/ime/KoreanIME.apk:system/app/LatinIME.apk)) \
+	$(call add-to-product-copy-files-if-exists, $(LOCAL_PATH)/prebuilt/ime/libjni_koreanime.so:system/lib/libjni_koreanime.so)
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -159,7 +159,6 @@ PRODUCT_PACKAGES += \
     gps.batman_lgu
 
 # nfc
-# Commands to migrate prefs from com.android.nfc3 to com.android.nfc
 PRODUCT_COPY_FILES += \
     $(call add-to-product-copy-files-if-exists, packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt)
 
@@ -176,12 +175,7 @@ PRODUCT_PACKAGES += \
     hcitool \
     hciconfig
 
-## charger mode
-#PRODUCT_PACKAGES += \
-#    charger \
-#    charger_res_images
-
-# cm packages
+# torch, wifidirect
 PRODUCT_PACKAGES += \
     Torch \
     WifiDirect
