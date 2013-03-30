@@ -5,4 +5,4 @@ key 139   MENU              WAKE_DROPPED
 key 158   BACK              WAKE_DROPPED
 key 102   HOME              WAKE
 key 172   HOME              WAKE
-#key 499   QUICKCLIP         WAKE_DROPPED
+key 499   QUICKCLIP         WAKE_DROPPED

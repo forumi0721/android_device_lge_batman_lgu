@@ -1,5 +1,5 @@
 # Executable files
-#bin/ami304d
+bin/ami304d
 bin/cnd
 bin/ks
 bin/mpdecision
@@ -11,6 +11,10 @@ bin/rild
 bin/rmt_storage
 bin/thermald
 bin/time_daemon
+bin/btld
+bin/bridgemgrd
+bin/port-bridge
+bin/libbroadcast_server
 
 # Audio
 lib/libacdbloader.so
@@ -83,6 +87,7 @@ lib/hw/nfc.default.so
 etc/nfcee_access.xml
 
 # GPS 
+lib/hw/gps.default.so
 lib/libgps.utils.so
 lib/libloc_adapter.so
 lib/libloc_api-rpc-qc.so
@@ -114,6 +119,9 @@ etc/firmware/vidc_1080p.fw
 etc/wifi/wpa_supplicant.conf
 etc/wifi/bcmdhd.cal
 
+# Thermald
+etc/thermald.conf
+
 # Key
 #usr/keylayout/atcmd_virtual_kbd.kl
 #usr/keylayout/ats_input.kl
@@ -122,11 +130,13 @@ etc/wifi/bcmdhd.cal
 #usr/keylayout/synaptics_ts.kl
 #usr/idc/touch_dev.idc
 
-# Thermald
-etc/thermald.conf
+## libv8
+#lib/libv8.so
 
-# libv8
-lib/libv8.so
+# libbroadcast_server
+lib/libbroadcast_service.so
+lib/libbroadcast_frame.so
+lib/libsurfaceflinger_client.so
 
 # vendor
 vendor/lib/drm/libdrmwvmplugin.so

@@ -5,6 +5,7 @@ on early-boot
     setrlimit 8 67108864 67108864
 
 on boot
+    # for AMI306
     chown compass system /dev/k3g_misc
     chmod 0660 /dev/k3g_misc
     chown compass system /dev/k3dh_acc_misc
@@ -18,8 +19,42 @@ on boot
     mkdir /data/amit 0770 compass system
     mkdir /data/gesture 0770 compass system
     chown system system /sys/devices/virtual/input/lge_touch/keyguard
+    chown system system /sys/devices/virtual/input/lge_touch/incoming_call
+    chown system system /sys/devices/i2c-9/9-0039/run_calibration
+    chmod 0770 /sys/devices/i2c-9/9-0039/run_calibration
 
-    #Create QMUX deamon socket area
+    write /sys/devices/i2c-0/0-0024/cyttsp_update_fw 1
+
+    chown system system /sys/class/power_supply/battery/device/high_temp_off
+    chmod 0660 /sys/class/power_supply/battery/device/high_temp_off
+
+    # Log Service
+    mkdir /data/logger 0771 system system
+    chown system system /data/logger
+    chmod 0775 /data/logger
+
+    # for fake battery mode
+    chown system system /sys/devices/platform/msm-charger/power_supply/battery/pseudo_batt
+    chown system system /sys/devices/platform/msm-charger/power_supply/battery/block_charging
+
+    # Start kernel driver for BTHID
+    insmod /system/lib/modules/bthid.ko
+
+    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
+    chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+    chown bluetooth bluetooth /proc/bluetooth/sleep/proto
+    chown system system /sys/module/sco/parameters/disable_esco
+    chmod 0660 /sys/module/bluetooth_power/parameters/power
+    chmod 0660 /sys/class/rfkill/rfkill0/state
+    chmod 0660 /proc/bluetooth/sleep/proto
+    chown bluetooth bluetooth /dev/ttyHS0
+    chmod 0660 /dev/ttyHS0
+    chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
+    chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
+
+    # Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
     mkdir /dev/socket/qmux_audio 0770 media audio
@@ -27,13 +62,19 @@ on boot
     mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
     chmod 2770 /dev/socket/qmux_bluetooth
 
-    #port-bridge
+    # Create the directories used by the Wireless subsystem
+    mkdir /data/misc/wifi 0775 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp system
+    chown dhcp system /data/misc/dhcp
+
+    # port-bridge
     chmod 0660 /dev/smd0
     chown system system /dev/smd0
 
-    #BT DUN port-bridge
-    chmod 0660 /dev/smd7
-    chown bluetooth bluetooth /dev/smd7
+    # BT DUN port-bridge
+    chmod 0660 /dev/ttyGS0
+    chown system system /dev/ttyGS0
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
@@ -48,10 +89,14 @@ on boot
     # Change owner and group for media server and surface flinger
     chown system system /sys/devices/virtual/graphics/fb1/format_3d
 
-    #For bridgemgr daemon to inform the USB driver of the correct transport
+    # increase dirty_writeback_interval
+    write /proc/sys/vm/dirty_writeback_centisecs 500
+    write /proc/sys/vm/dirty_expire_centisecs 200
+
+    # For bridgemgr daemon to inform the USB driver of the correct transport
     chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
 
-    #To allow interfaces to get v6 address when tethering is enabled
+    # To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet2/accept_ra 2
@@ -69,27 +114,58 @@ on boot
     write /proc/sys/net/ipv6/conf/rmnet_sdio6/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
 
-    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
-    chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
-    chown bluetooth bluetooth /proc/bluetooth/sleep/proto
-    chown system system /sys/module/sco/parameters/disable_esco
-    chmod 0660 /sys/module/bluetooth_power/parameters/power
-    chmod 0660 /sys/class/rfkill/rfkill0/state
-    chmod 0660 /proc/bluetooth/sleep/proto
-    chown bluetooth bluetooth /dev/ttyHS0
-    chmod 0660 /dev/ttyHS0
-    chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
-    chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
+    # Change owner and group for factory
+    chown system system /sys/class/atcmd/name
+    chmod 0660 /sys/class/atcmd/name
 
     chmod 0444 /proc/cmdline
+    chown system system /dev/lge_atcmd
+    chown system system /dev/eta_event_log
+    chown system system /sys/devices/platform/fsa8008.22/hookkeylog
     chown system system /sys/devices/platform/msm-charger/at_charge
     chown system system /sys/devices/platform/msm-charger/at_chcomp
     chown system system /sys/devices/platform/msm-charger/at_fuelrst
     chown system system /sys/devices/platform/msm-charger/at_fuelval
     chown system system /sys/devices/platform/msm-charger/at_pmrst
     chown system system /sys/devices/platform/msm-charger/at_batl
+    chown system system /sys/class/fsa8008/hookkeylog
+    chmod 0660 /sys/class/fsa8008/hookkeylog
+    chmod 0660 /sys/devices/platform/fsa8008.22/hookkeylog
+
+    # LGE_325_BATT_ATCMD_SUPPORT
+    chown system system /sys/devices/platform/b325_battery/at_charge
+    chown system system /sys/devices/platform/b325_battery/at_chcomp
+    chown system system /sys/devices/platform/b325_battery/at_fuelrst
+    chown system system /sys/devices/platform/b325_battery/at_fuelval
+    chown system system /sys/devices/platform/b325_battery/at_pmrst
+    chown system system /sys/devices/platform/b325_battery/at_batl
+
+    chown system system /sys/module/lge_emmc_direct_access/parameters/frst_flag
+    chown system system /sys/module/lge_emmc_direct_access/parameters/boot_info
+    chown system system /sys/module/lge_emmc_direct_access/parameters/manual_test_mode
+    chown system system /sys/module/lge_emmc_direct_access/parameters/db_integrity_ready
+    chown system system /sys/module/lge_emmc_direct_access/parameters/fpri_crc_ready
+    chown system system /sys/module/lge_emmc_direct_access/parameters/file_crc_ready
+    chown system system /sys/module/lge_emmc_direct_access/parameters/db_dump_ready
+    chown system system /sys/module/lge_emmc_direct_access/parameters/db_copy_ready
+    chown system system /sys/module/lge_emmc_direct_access/parameters/integrity_ret
+    chown system system /sys/module/lge_emmc_direct_access/parameters/external_memory_test
+    chown system system /sys/module/lge_emmc_direct_access/parameters/fota_id_read
+    chown system system /sys/module/lge_emmc_direct_access/parameters/testmode_result
+    chown system system /sys/module/lge_emmc_direct_access/parameters/deepsleep_result
+    chown system system /sys/devices/platform/qfuse_status_check/qfuse_status
+
+    chown system graphics /sys/class/graphics/fb1/connected
+    chown system graphics /sys/class/graphics/fb1/edid_modes
+    chown system graphics /sys/class/graphics/fb1/power_state
+    chown system graphics /sys/class/graphics/fb1/hpd
+    chown system graphics /sys/class/graphics/fb1/hdcp_present
+    chown system graphics /sys/class/graphics/fb1/hdmi_mode
+    chmod 0660 /sys/class/graphics/fb1/power_state
+
+    # lcd on off test
+    chown system system /sys/devices/platform/msm_fb.524801/msm_fb_lcd_onoff
+    chmod 0644 /sys/devices/platform/msm_fb.524801/msm_fb_lcd_onoff
 
     # Torch perms
     chown system camera /sys/class/leds/spotlight/brightness
@@ -98,16 +174,18 @@ on boot
     # PowerHAL perms
     chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
 
+    # NFC Property and driver permission
+	chmod 0660 /dev/pn544
+	setprop ro.nfc.port I2C
+	chown nfc system /dev/pn544	
+
     # Vibrator amp 
     write /sys/devices/virtual/timed_output/vibrator 50
 
     # Button backlight
     write /sys/class/leds/button-backlight/max_brightness 1
 
-    # NFC Property and driver permission
-	chmod 0660 /dev/pn544
-	setprop ro.nfc.port I2C
-	chown nfc system /dev/pn544	
+    chmod 775 system/lib/modules/mwlan_aarp.ko
 
 on init
     export TMPDIR /data/local/tmp
@@ -119,14 +197,16 @@ on init
     # create mountpoints for storage
     mkdir /storage 0555 system system
     mkdir /storage/sdcard0 0000 system system
+    symlink /storage/sdcard0 /storage/sdcard
     symlink /storage/sdcard0 /sdcard
 
 on emmc-fs
+    #system
     mkdir /system
     wait /dev/block/mmcblk0p26
-
     mount ext4 /dev/block/mmcblk0p26 /system rw barrier=1 data=ordered
 
+    #data
     wait /dev/block/mmcblk0p28
     exec /system/bin/e2fsck -y /dev/block/mmcblk0p28
     mount ext4 /dev/block/mmcblk0p28 /data nosuid nodev barrier=1 data=ordered noauto_da_alloc
@@ -184,14 +264,6 @@ on post-fs-data
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
     setprop vold.post_fs_data_done 1
-
-service chargerlogo /charger
-    class charger
-    user root
-
-on property:init.svc.chargerlogo=running
-    setprop sys.usb.config adb
-    start rmt_storage
 
 service cnd /system/bin/cnd
     class main
@@ -316,6 +388,12 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
+service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
+    class main
+    #user bluetooth
+    group bluetooth net_bt_admin
+    disabled
+
 on property:dev.bootcomplete=1
     exec /system/bin/hwaddrs
 
@@ -324,14 +402,14 @@ service ami304d /system/bin/ami304d
     user compass
     group system
 
+#service sensorservice /system/bin/sensorservice
+#    class main
+#    user compass
+#    group system
+
 service hdmid /system/bin/hdmid
     class late_start
     socket hdmid stream 0660 root system graphics
-    disabled
-
-service gpsone_daemon /system/bin/gpsone_daemon
-    user system
-    group system qcom_oncrpc inet
     disabled
 
 #on property:ro.hdmi.enable=true
